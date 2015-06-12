@@ -30,13 +30,13 @@ do
 
 	# Remove Stop Words
 
-	python outputCleaner.py stopWords.csv < $1/temp/temps$i > $2/out$i
+	python outputCleaner.py stopWords.csv < $1/temp/temps$i > $2/out$i.csv
 
 	echo $i
 
 done
 
 # Sum Up Frequencies
-#TODO
+	python FrequencyAdder.py $2 > $2/totals.csv
 
 rm -rf $1/temp

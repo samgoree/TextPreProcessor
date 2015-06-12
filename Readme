@@ -6,6 +6,7 @@ Put PreProcessor.sh in a directory with:
 	outputCleaner.py
 	SpellChecker.py
 	SpellFreqFix.py
+	FrequencyAdder.py
 	WordCounter.java
 	stopWords.csv <- your list of stop words
 	US.dic <- your dictionary
