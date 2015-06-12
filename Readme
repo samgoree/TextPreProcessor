@@ -1,0 +1,20 @@
+Complete PreProcessor, from txt files to csv cleaned, spell-checked frequency files. Written for SERP as part of Siena College REU program summer 2015
+Sam Goree
+
+Instructions:
+Put PreProcessor.sh in a directory with:
+	outputCleaner.py
+	SpellChecker.py
+	SpellFreqFix.py
+	WordCounter.java
+	stopWords.csv <- your list of stop words
+	US.dic <- your dictionary
+Change the file permissions on PreProcessor.sh by going to the relevant directory with the terminal and typing
+$ chmod +x PreProcessor.sh
+run PreProcessor.sh by typing
+$ ./PreProcessor.sh <your input directory> <your output directory>
+
+Enjoy!
+
+
+Included US.dic from http://www.winedt.org/Dict/

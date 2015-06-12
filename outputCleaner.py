@@ -1,0 +1,12 @@
+# outputCleaner.py
+# removes words from an output file (from WordCounter) that are on a list of stop words, passed in argv[1]
+
+import sys
+
+stopWords = []
+for line in open(sys.argv[1]):
+	stopWords.append(line)
+for line in sys.stdin:
+	word = line.split(',')[0]
+	if (word + '\n') not in stopWords:
+		sys.stdout.write(line)

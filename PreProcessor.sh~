@@ -1,0 +1,42 @@
+#! /bin/bash
+# completes all of the preprocessing of the corpus, which should be in a directory ($1) and deposits the processed files into another directory ($2)
+
+FILE_COUNT=0
+for file in $1/*
+do
+	FILE_COUNT=$((FILE_COUNT + 1))
+done
+
+mkdir $1/temp
+
+for i in $(seq 1 $FILE_COUNT)
+do
+	# Count Word Frequencies
+
+	touch $1/temp/temp$i
+	java WordCounter $1/temp/temp$i < $1/new$i
+	
+	# Remove Commas
+
+	sed -r 's/(.*),(.*),(.*)/\1\2,\3/' $1/temp/temp$i > $1/temp/tempc$i
+
+	# Remove Nonsense Lines
+
+	grep '^[^,]*,[0-9]*$' $1/temp/tempc$i > $1/temp/tempn$i
+
+	# Spellcheck Frequencies
+
+	python SpellFreqFix.py < $1/temp/tempn$i > $1/temp/temps$i
+
+	# Remove Stop Words
+
+	python outputCleaner.py stopWords.csv < $1/temp/temps$i > $2/out$i
+
+	echo $i
+
+done
+
+# Sum Up Frequencies
+#TODO
+
+#rm -rf $1/temp
