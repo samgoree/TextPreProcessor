@@ -14,7 +14,7 @@ do
 	# Count Word Frequencies
 
 	touch $1/temp/temp$i
-	java WordCounter $1/temp/temp$i < $1/new$i
+	python WordCounter.py < $1/temp/temp$i > $1/new$i
 	
 	# Remove Commas
 
