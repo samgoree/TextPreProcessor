@@ -14,7 +14,7 @@ do
 	# Count Word Frequencies
 
 	touch $1/temp/temp$i
-	java WordCounter $1/temp/temp$i < $1/new$i
+	python WordCounter.py < $1/new$i > $1/temp/temp$i
 	
 	# Remove Commas
 
@@ -22,15 +22,11 @@ do
 
 	# Remove Nonsense Lines
 
-	grep '^[^,]*,[0-9]*$' $1/temp/tempc$i > $1/temp/tempn$i
-
-	# Spellcheck Frequencies
-
-	python SpellFreqFix.py < $1/temp/tempn$i > $1/temp/temps$i
+	egrep '^[A-Za-z ]{3,},[0-9]*$' $1/temp/tempc$i > $1/temp/tempn$i
 
 	# Remove Stop Words
 
-	python outputCleaner.py stopWords.csv < $1/temp/temps$i > $2/out$i.csv
+	python outputCleaner.py stopWords.csv < $1/temp/tempn$i > $2/out$i.csv
 
 	echo $i
 
