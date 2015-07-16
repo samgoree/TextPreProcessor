@@ -14,7 +14,9 @@ do
 	# Count Word Frequencies
 
 	touch $1/temp/temp$i
+
 	python WordCounter.py < $1/new$i > $1/temp/temp$i
+
 	
 	# Remove Commas
 

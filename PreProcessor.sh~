@@ -14,7 +14,11 @@ do
 	# Count Word Frequencies
 
 	touch $1/temp/temp$i
+<<<<<<< HEAD
 	python WordCounter.py < $1/new$i > $1/temp/temp$i
+=======
+	python WordCounter.py < $1/temp/temp$i > $1/new$i
+>>>>>>> 29d31a99d4a3e0a8c3d97d4f3f998e5c981c75be
 	
 	# Remove Commas
 
@@ -22,7 +26,7 @@ do
 
 	# Remove Nonsense Lines
 
-	grep '^[A-Za-z ]{3,},[0-9]*$' $1/temp/tempc$i > $1/temp/tempn$i
+	egrep '^[A-Za-z ]{3,},[0-9]*$' $1/temp/tempc$i > $1/temp/tempn$i
 
 	# Remove Stop Words
 
